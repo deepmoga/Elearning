@@ -1,0 +1,102 @@
+﻿@model onlineportal.Models.Registeration
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/ViewPage1.cshtml";
+}
+
+<section class="paralbackground banner" style="background-image:url('../upload/pagebanner_02.jpg');" data-img-width="2400" data-img-height="907" data-diff="100">
+    <div class="overlay"></div>
+</section><!-- end section -->
+<div class="page-title bgg">
+    <div class="container clearfix">
+        <div class="title-area pull-left">
+            <h2>Registration <small>Registere Your Account</small></h2>
+        </div><!-- /.pull-right -->
+        <div class="pull-right hidden-xs">
+            <div class="bread">
+                <ol class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li class="active">Forum</li>
+                </ol>
+            </div><!-- end bread -->
+        </div><!-- /.pull-right -->
+    </div>
+</div><!-- end page-title -->
+
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="big-title">
+                    <h2 class="related-title">
+                        <span>LOGIN FORM</span>
+                    </h2>
+                </div><!-- end big-title -->
+                <div class="loginform">
+                    <form class="row">
+                        <div class="col-md-12">
+                            <input type="text" name="name" class="form-control" placeholder="Name">
+                            <input type="email" name="email" class="form-control" placeholder="Email">
+                            <button type="submit" value="SEND" class="btn btn-primary btn-block btn-lg"> Login Account</button>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- end col -->
+
+            <div class="col-md-6 col-sm-12">
+                <div class="big-title">
+                    <h2 class="related-title">
+                        <span>REGISTER FORM</span>
+                        
+                    </h2>
+                    
+                </div><!-- end big-title -->
+                <div class="loginform">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            <div class="form-group">
+                               
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control",
+                                   placeholder ="Name" } })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                               
+                            </div>
+
+                            <div class="form-group">
+                                
+                               
+                                    @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control",Placeholder="Mobile" } })
+                                    @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
+                             
+                            </div>
+
+                            <div class="form-group">
+                                
+                               
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control",placeholder="Email" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                           
+                            </div>
+
+                            <div class="form-group">
+                               
+                                    <input type="submit" value="Create" class="btn btn-primary btn-block btn-lg" />
+                               
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div><!-- end col -->
+        </div><!-- end row -->
+    </div>
+    </section>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
